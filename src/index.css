@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", serif;
+
+  --color-brand-dark: #080610;
+  --color-brand-surface: #110D1C;
+  --color-brand-zinc: #1E1730;
+  --color-brand-purple: #A855F7;
+  --color-brand-purple-dim: #7C3BB5;
+  --color-brand-muted: #6B5E82;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-brand-dark text-white font-sans antialiased;
+    /* Grain/noise texture overlay */
+    position: relative;
+  }
+
+
+  ::selection {
+    background: rgba(168, 85, 247, 0.35);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+/* Cat image pulse — fades in to --peak opacity and back out */
+@keyframes catPulse {
+  0%, 100% { opacity: 0; }
+  40%, 60% { opacity: var(--peak, 0.25); }
+}
+
+/* Car driving — drifts horizontally with slight tilt */
+@keyframes carDrive {
+  0%   { transform: translateX(0px)  rotate(0deg); }
+  25%  { transform: translateX(22px) rotate(-0.8deg); }
+  50%  { transform: translateX(44px) rotate(0deg); }
+  75%  { transform: translateX(22px) rotate(0.8deg); }
+  100% { transform: translateX(0px)  rotate(0deg); }
+}
+
+/* Car idle — subtle vibration */
+@keyframes carIdle {
+  0%   { transform: translateY(0px)  rotate(0deg); }
+  25%  { transform: translateY(-3px) rotate(0.5deg); }
+  50%  { transform: translateY(0px)  rotate(0deg); }
+  75%  { transform: translateY(-2px) rotate(-0.5deg); }
+  100% { transform: translateY(0px)  rotate(0deg); }
+}
+
+/* Cat walking — drifts right and bobs slightly */
+@keyframes catWalk {
+  0%   { transform: translateX(0px)   translateY(0px); }
+  25%  { transform: translateX(18px)  translateY(-5px); }
+  50%  { transform: translateX(36px)  translateY(0px); }
+  75%  { transform: translateX(18px)  translateY(-5px); }
+  100% { transform: translateX(0px)   translateY(0px); }
+}
+
+/* Cat sitting — slow idle sway */
+@keyframes catSit {
+  0%   { transform: rotate(0deg)    translateY(0px); }
+  30%  { transform: rotate(1.5deg)  translateY(-3px); }
+  60%  { transform: rotate(-1deg)   translateY(2px); }
+  100% { transform: rotate(0deg)    translateY(0px); }
+}
+
+/* Cat licking — rhythmic lean */
+@keyframes catLick {
+  0%   { transform: rotate(0deg)   translateY(0px); }
+  20%  { transform: rotate(-3deg)  translateY(-4px); }
+  40%  { transform: rotate(0deg)   translateY(0px); }
+  60%  { transform: rotate(-3deg)  translateY(-4px); }
+  80%  { transform: rotate(0deg)   translateY(0px); }
+  100% { transform: rotate(0deg)   translateY(0px); }
+}
+
+/* Dark glass card with purple-tinted border */
+.grunge-card {
+  background: rgba(17, 13, 28, 0.75);
+  border: 1px solid rgba(168, 85, 247, 0.1);
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 4px 28px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(168, 85, 247, 0.07);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.grunge-card:hover {
+  border-color: rgba(168, 85, 247, 0.28);
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.6),
+    0 0 50px -10px rgba(168, 85, 247, 0.22),
+    inset 0 1px 0 rgba(168, 85, 247, 0.12);
+}
+
+/* Glow utility */
+.purple-glow {
+  box-shadow: 0 0 45px -8px rgba(168, 85, 247, 0.38);
+}
+
+/* Worn/muted pill tag */
+.grunge-tag {
+  background: rgba(168, 85, 247, 0.07);
+  border: 1px solid rgba(168, 85, 247, 0.14);
+  border-radius: 8px;
+}
